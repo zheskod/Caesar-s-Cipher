@@ -63,13 +63,19 @@ text_main = input('На каком языке будем шфировать, а�
 # текст шифровки/расшифровки
 code_txt = input('Введите текст: ')
 
-print('Известен ключ(')
-# шаг сдвига
-shift_step = int(input('Ключ? (шаг сдвига): '))
-
-for j in range(0, shift_step+1):
-    shift_step = j
+choice_step = input('Известен ключ (шаг сдвига)? (да/нет): ')
+if choice_step == 'да':
+    shift_step = int(input('Введите (шаг сдвига): '))
     if text_main == 'р':
         ru_code(change_encryption, code_txt, shift_step)
     else:
         eng_code(change_encryption, code_txt, shift_step)
+
+if choice_step == 'нет':
+    shift_step = int(input('Введите количество попыток: '))
+    for j in range(0, shift_step+1):
+        shift_step = j
+        if text_main == 'р':
+            ru_code(change_encryption, code_txt, shift_step)
+        else:
+            eng_code(change_encryption, code_txt, shift_step)
